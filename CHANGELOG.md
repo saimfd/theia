@@ -1,5 +1,12 @@
 # Change Log
 
+## v0.16.0
+
+Breaking changes:
+
+- [debug-nodejs] removed the `@theia/debug-nodejs` extension [#6933](https://github.com/eclipse-theia/theia/pull/6933)
+  - The extension will no longer be maintained by the project and remains in the Git history for anyone who would like to reference it or maintain it.
+
 ## v0.15.0
 
 - [application-manager] added config to disable reloading windows [#6981](https://github.com/eclipse-theia/theia/pull/6981)
