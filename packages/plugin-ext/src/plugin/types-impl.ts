@@ -30,6 +30,7 @@ import { relative } from '../common/paths-util';
 import { startsWithIgnoreCase } from '@theia/languages/lib/common/language-selector/strings';
 import { MarkdownString, isMarkdownString } from './markdown-string';
 import { SymbolKind } from '../common/plugin-api-rpc-model';
+import { UriComponents } from '../common/uri-components';
 
 export class Disposable {
     private disposable: undefined | (() => void);
@@ -1319,6 +1320,26 @@ export enum FileType {
     File = 1,
     Directory = 2,
     SymbolicLink = 64
+}
+
+export interface FileSystem {
+
+    /**
+     * Read the entire contents of a file.
+     *
+     * @param uri The uri of the file.
+     * @return An array of bytes or a thenable that resolves to such.
+     */
+    readFile(uri: UriComponents): Promise<Uint8Array>;
+
+    /**
+     * Write data to a file, replacing its entire contents.
+     *
+     * @param uri The uri of the file.
+     * @param content The new content of the file.
+     */
+    writeFile(uri: UriComponents, content: Uint8Array): Promise<void>;
+
 }
 
 export class ProgressOptions {
